@@ -14,8 +14,6 @@ const useJobContext = () => useContext(JobsContext)
     )
   }
 
-
-
 const initialFormData = {
    jobTitle:"",
       companyName:"",
@@ -34,6 +32,7 @@ const JobsContextProvider = ({children}) => {
   const [jobs, setJobs] = useState(null)
   const [loading, setLoading] = useState(false)
   const [deleteLoading, setDeleteLoading] = useState(false)
+  const [formLoading, setFormLoading] = useState(false)
    const [deleteBtnId,setDeleteBtnId] = useState(null)
   const [error, setError] = useState(null)
   const [formError, setFromError] = useState(null)
@@ -46,9 +45,8 @@ const JobsContextProvider = ({children}) => {
 
   const postApi = (jobData) => {
 
-    console.log(jobData)
 
-  setLoading(true)
+  setFormLoading(true)
     fetch(`${ apiUrl }/add`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -67,7 +65,7 @@ const JobsContextProvider = ({children}) => {
       })
       .catch(error => {
         setFromError(error)
-      }).finally(() => setLoading(false))
+      }).finally(() => setFormLoading(false))
 }
 
 
@@ -137,7 +135,7 @@ const JobsContextProvider = ({children}) => {
 
   }
 
-  const contextValue={jobs,fetchApi,loading,error,handleDelete,deleteLoading,deleteBtnId,formData,handleFormValue,handleSubmit,formMessage,formError}
+  const contextValue={jobs,fetchApi,loading,error,handleDelete,deleteLoading,deleteBtnId,formData,handleFormValue,handleSubmit,formMessage,formError,formLoading}
   
   return (
     <JobsContext.Provider value={contextValue}>

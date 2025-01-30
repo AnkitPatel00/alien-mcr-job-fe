@@ -3,7 +3,7 @@ import { useJobContext } from "../Context/JobsContext"
 
 const PostAJob = () => {
 
-  const { formData,loading,handleFormValue,handleSubmit,formMessage,formError } = useJobContext()
+  const { formData,handleFormValue,handleSubmit,formMessage,formError,formLoading } = useJobContext()
   
 
   return (
@@ -39,7 +39,7 @@ const PostAJob = () => {
           <label className="mb-2" htmlFor="requiredQualifications">Job Qualifications:</label>
           <textarea value={formData.requiredQualifications} onChange={handleFormValue} name="requiredQualifications" className="form-control mb-3" id="requiredQualifications"></textarea>
 
-          <button className={loading?"btn btn-info":"btn btn-primary" }>{loading ?"Saving..." :"Post Job"}</button>
+          <button className={formLoading?"btn btn-info":"btn btn-primary" }>{formLoading ?"Saving..." :"Post Job"}</button>
 
         </form>
 
