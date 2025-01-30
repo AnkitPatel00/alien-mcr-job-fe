@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import { createContext, useContext } from "react"
 
-const apiUrl = "https://internhouse.vercel.app/api/jobposts"
+const apiUrl = "https://internhouse-be.vercel.app/api/jobposts"
 
 const JobsContext = createContext()
 const useJobContext = () => useContext(JobsContext)
